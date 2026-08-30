@@ -1,0 +1,644 @@
+<title>NW Group Careers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&family=Noto+Sans+SC:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFF6ED; --card:#FFFFFF; --ink:#241B2F; --ink-soft:#8B8398;
+    --red:#FF3B5C; --red-deep:#E6264A; --yellow:#FFD54A; --yellow-soft:#FFF3D1;
+    --mint:#8FE3C4; --mint-soft:#E3FBF1; --lavender:#C4B5FD; --lavender-soft:#F0EBFF;
+    --peach:#FFC6A8; --peach-soft:#FFE9DD; --line:#F0E5D8; --radius:22px;
+    --shadow:0 10px 26px -12px rgba(36,27,47,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Nunito','Noto Sans SC',sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Baloo 2','Noto Sans SC',sans-serif; letter-spacing:-0.01em;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  :focus-visible{outline:3px solid var(--red); outline-offset:3px;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:1000px; margin:0 auto; padding:0 20px;}
+  .mark{color:var(--red);}
+
+  header.top{position:sticky; top:0; z-index:60; background:rgba(255,246,237,0.92); backdrop-filter:blur(10px);}
+  .top-bar{display:flex; align-items:center; justify-content:space-between; padding:16px 20px; max-width:1000px; margin:0 auto; gap:12px;}
+  .wordmark{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:1.15rem; display:flex; align-items:center; gap:6px; flex-shrink:0;}
+  .wordmark .badge{background:var(--red); color:#fff; font-size:0.65rem; font-weight:700; padding:3px 8px; border-radius:100px; font-family:'Nunito',sans-serif;}
+  nav.links{display:flex; gap:20px; font-size:0.85rem; font-weight:700; flex-shrink:0;}
+  nav.links a{opacity:0.75; transition:opacity .15s ease; white-space:nowrap;}
+  nav.links a:hover{opacity:1;}
+  @media (max-width:900px){ nav.links{display:none;} }
+  .top-actions{display:flex; align-items:center; gap:10px;}
+  .lang-toggle{background:var(--card); border:1.5px solid var(--line); color:var(--ink); padding:8px 14px; border-radius:100px; font-size:0.8rem; font-weight:800; cursor:pointer;}
+  .lang-toggle:hover{border-color:var(--red);}
+  .cta-mini{background:var(--red); color:#fff; padding:10px 18px; border-radius:100px; border:none; font-size:0.85rem; font-weight:800; cursor:pointer; box-shadow:0 6px 14px -6px rgba(255,59,92,0.6); transition:transform .15s ease; white-space:nowrap;}
+  .cta-mini:active{transform:scale(0.95);}
+
+  .hero{padding:28px 0 40px;}
+  .hero-card{background:linear-gradient(135deg, var(--red) 0%, #FF6B87 100%); border-radius:32px; padding:40px 26px 34px; position:relative; overflow:hidden; color:#fff; box-shadow:var(--shadow);}
+  .hero-sticker{position:absolute; top:22px; right:22px; background:var(--yellow); color:var(--ink); font-weight:800; font-size:0.72rem; padding:7px 14px; border-radius:100px; transform:rotate(6deg); box-shadow:0 4px 10px -4px rgba(0,0,0,0.25);}
+  .hero h1{font-size:clamp(2rem,7vw,2.9rem); line-height:1.15; margin:10px 0 14px; font-weight:800;}
+  .hero p{font-size:1rem; opacity:0.92; max-width:44ch; margin:0 0 26px; line-height:1.6;}
+  .hero-actions{display:flex; gap:10px; flex-wrap:wrap;}
+  .btn-primary{background:var(--ink); color:#fff; border:none; padding:14px 26px; border-radius:100px; font-weight:800; font-size:0.95rem; cursor:pointer; transition:transform .15s ease;}
+  .btn-primary:active{transform:scale(0.96);}
+  .btn-ghost{background:rgba(255,255,255,0.18); color:#fff; border:1.5px solid rgba(255,255,255,0.6); padding:13px 24px; border-radius:100px; font-weight:800; font-size:0.95rem; cursor:pointer;}
+
+  section{padding:46px 0;}
+  .section-head{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+  .section-emoji{font-size:1.4rem;}
+  .section-head h2{font-size:clamp(1.4rem,4vw,1.85rem); margin:0; font-weight:700;}
+  .section-sub{color:var(--ink-soft); margin:0 0 26px; font-size:0.92rem; max-width:56ch;}
+
+  .photo-feed{columns:2; column-gap:16px;}
+  @media (max-width:560px){ .photo-feed{columns:2; column-gap:12px;} }
+  .photo-card{break-inside:avoid; margin-bottom:16px; background:var(--card); border-radius:18px; padding:8px 8px 12px; box-shadow:var(--shadow); position:relative;}
+  .photo-card:nth-child(odd){transform:rotate(-1.4deg);}
+  .photo-card:nth-child(even){transform:rotate(1.2deg);}
+  .photo-card .tape{position:absolute; top:-8px; left:50%; transform:translateX(-50%) rotate(-3deg); width:46px; height:18px; background:var(--yellow-soft); border:1px solid var(--yellow); opacity:0.85; border-radius:2px;}
+  .photo-card img{border-radius:12px; width:100%; height:auto;}
+  .photo-placeholder{border-radius:12px; width:100%; aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; font-size:2.2rem;}
+  .photo-placeholder.p1{background:linear-gradient(150deg, var(--peach-soft), var(--peach));}
+  .photo-placeholder.p2{background:linear-gradient(150deg, var(--mint-soft), var(--mint));}
+  .photo-placeholder.p3{background:linear-gradient(150deg, var(--lavender-soft), var(--lavender));}
+  .photo-placeholder.p4{background:linear-gradient(150deg, var(--yellow-soft), var(--yellow));}
+  .photo-cap{padding:10px 4px 2px;}
+  .photo-cap p{margin:0 0 6px; font-size:0.85rem; font-weight:700; line-height:1.3;}
+  .photo-meta{display:flex; align-items:center; gap:4px; font-size:0.75rem; color:var(--ink-soft);}
+  .photo-note{margin-top:6px; font-size:0.78rem; color:var(--ink-soft); font-style:italic;}
+
+  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media (max-width:860px){ .services-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .services-grid{grid-template-columns:1fr;} }
+  .service-card{border-radius:20px; padding:24px 20px; box-shadow:var(--shadow);}
+  .service-card:nth-child(5n+1){background:var(--peach-soft);}
+  .service-card:nth-child(5n+2){background:var(--mint-soft);}
+  .service-card:nth-child(5n+3){background:var(--lavender-soft);}
+  .service-card:nth-child(5n+4){background:var(--yellow-soft);}
+  .service-card:nth-child(5n+5){background:var(--peach-soft);}
+  .service-card .emoji{font-size:1.6rem; margin-bottom:10px; display:block;}
+  .service-card h3{font-size:1.05rem; margin:0 0 8px; font-weight:700;}
+  .service-card p{font-size:0.86rem; color:var(--ink-soft); line-height:1.5; margin:0;}
+
+  .benefits-grid{display:flex; flex-wrap:wrap; gap:10px;}
+  .benefit{display:flex; align-items:center; gap:8px; padding:12px 16px; border-radius:100px; box-shadow:var(--shadow); font-size:0.85rem; font-weight:700;}
+  .benefit:nth-child(6n+1){background:var(--peach-soft);}
+  .benefit:nth-child(6n+2){background:var(--mint-soft);}
+  .benefit:nth-child(6n+3){background:var(--lavender-soft);}
+  .benefit:nth-child(6n+4){background:var(--yellow-soft);}
+  .benefit:nth-child(6n+5){background:var(--peach-soft);}
+  .benefit:nth-child(6n+6){background:var(--mint-soft);}
+
+  .positions-list{display:flex; flex-direction:column; gap:14px;}
+  .position-card{background:var(--card); border-radius:20px; box-shadow:var(--shadow); overflow:hidden;}
+  .position-summary{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 22px; cursor:pointer; flex-wrap:wrap; background:none; border:none; width:100%; text-align:left;}
+  .position-left{display:flex; align-items:center; gap:14px;}
+  .position-ico{width:46px; height:46px; border-radius:14px; background:var(--mint-soft); display:flex; align-items:center; justify-content:center; font-size:1.35rem; flex-shrink:0;}
+  .position-title h3{font-size:1.05rem; margin:0 0 6px; font-weight:800;}
+  .position-badges{display:flex; gap:6px; flex-wrap:wrap;}
+  .badge{font-size:0.68rem; font-weight:800; padding:4px 11px; border-radius:100px;}
+  .badge.type{background:var(--yellow-soft); color:#8A6A00;}
+  .badge.loc{background:var(--lavender-soft); color:#5B3FA8;}
+  .chevron{font-size:1.3rem; color:var(--ink-soft); transition:transform .2s ease; flex-shrink:0;}
+  .position-card.open .chevron{transform:rotate(180deg);}
+  .position-detail{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .position-detail-inner{padding:0 22px 24px; border-top:1px solid var(--line); margin-top:0; padding-top:20px;}
+  .detail-block{margin-bottom:16px;}
+  .detail-block h4{font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft); margin:0 0 8px; font-weight:800;}
+  .detail-block p{margin:0; font-size:0.9rem; line-height:1.6; color:var(--ink);}
+  .detail-block ul{margin:0; padding-left:20px; font-size:0.9rem; line-height:1.7; color:var(--ink);}
+  .detail-apply{margin-top:6px; display:inline-block; text-decoration:none;}
+
+  .looking-card{background:var(--ink); color:#fff; border-radius:26px; padding:40px 28px;}
+  .looking-label{color:var(--yellow); font-weight:800; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em;}
+  .looking-list{display:grid; grid-template-columns:1fr 1fr; gap:14px 28px; margin-top:24px; list-style:none; padding:0;}
+  @media (max-width:640px){ .looking-list{grid-template-columns:1fr;} }
+  .looking-list li{display:flex; gap:10px; align-items:flex-start; font-size:0.95rem; line-height:1.5;}
+  .looking-list .check{color:var(--yellow); font-weight:800; flex-shrink:0;}
+  .looking-card .note{margin-top:22px; font-size:0.86rem; opacity:0.75;}
+
+  .process-list{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media (max-width:860px){ .process-list{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .process-list{grid-template-columns:1fr;} }
+  .process-step{background:var(--card); border-radius:18px; padding:22px 18px; box-shadow:var(--shadow);}
+  .process-step .step-num{font-family:'Baloo 2',sans-serif; font-size:1.1rem; color:var(--red); font-weight:800; margin-bottom:10px;}
+  .process-step h3{font-size:0.96rem; margin:0 0 8px; font-weight:700;}
+  .process-step p{font-size:0.84rem; color:var(--ink-soft); line-height:1.5; margin:0;}
+
+  .final-cta{background:linear-gradient(135deg, var(--red) 0%, #FF6B87 100%); border-radius:30px; padding:52px 30px; text-align:center; color:#fff;}
+  .final-cta h2{font-size:clamp(1.6rem,4.5vw,2.2rem); margin:0 0 14px; font-weight:800;}
+  .final-cta p{font-size:1rem; opacity:0.94; max-width:48ch; margin:0 auto 28px; line-height:1.6;}
+  .final-cta .cta-mini{background:var(--ink); padding:16px 32px; font-size:1rem;}
+
+  footer{padding:36px 0 90px; margin-top:10px;}
+  footer .wrap{background:var(--ink); color:#fff; border-radius:24px; padding:28px 26px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; align-items:center;}
+  footer p{font-size:0.82rem; margin:0; opacity:0.85;}
+
+  .floating-apply{position:fixed; bottom:20px; right:20px; z-index:70; box-shadow:0 10px 24px -8px rgba(255,59,92,0.55);}
+  @media (min-width:861px){ .floating-apply{display:none;} }
+
+  /* ---------- fun/creative additions ---------- */
+  .hl{position:relative; white-space:nowrap;}
+  .hl::after{content:''; position:absolute; left:-3px; right:-3px; bottom:2px; height:0.42em; background:var(--yellow); z-index:-1; border-radius:3px; transform:rotate(-1deg);}
+
+  .marquee{background:var(--ink); overflow:hidden; padding:13px 0; white-space:nowrap;}
+  .marquee-track{display:inline-flex; animation:marquee 26s linear infinite;}
+  .marquee-track span{color:#fff; font-weight:800; font-size:0.82rem; padding:0 20px; display:inline-flex; align-items:center; gap:8px; letter-spacing:0.02em;}
+  @keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  section.alt-peach{background:var(--peach-soft);}
+  section.alt-mint{background:var(--mint-soft);}
+  section.alt-lavender{background:var(--lavender-soft);}
+  section.alt-yellow{background:var(--yellow-soft);}
+
+  .hero-sparkle{position:absolute; font-size:1.4rem; opacity:0.85; pointer-events:none;}
+  .hero-card{position:relative;}
+
+  .hot-sticker{
+    position:absolute; top:-10px; right:16px; background:var(--yellow); color:var(--ink);
+    font-weight:800; font-size:0.66rem; padding:5px 12px; border-radius:100px;
+    transform:rotate(8deg); box-shadow:0 4px 8px -3px rgba(0,0,0,0.3); z-index:2;
+  }
+  .position-card{position:relative;}
+
+  .photo-card{transition:transform .2s ease, box-shadow .2s ease;}
+  .photo-card:hover{box-shadow:0 16px 32px -14px rgba(36,27,47,0.28); transform:translateY(-3px) rotate(0deg) !important;}
+
+  .btn-primary, .cta-mini{box-shadow:3px 3px 0 var(--ink); transition:transform .12s ease, box-shadow .12s ease;}
+  .btn-primary:active, .cta-mini:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink);}
+  .final-cta .cta-mini{box-shadow:3px 3px 0 rgba(0,0,0,0.35);}
+  .final-cta .cta-mini:active{box-shadow:1px 1px 0 rgba(0,0,0,0.35);}
+
+  /* ---------- more motion ---------- */
+  @keyframes fadeInUp{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes float{ 0%,100%{transform:translateY(0) rotate(-4deg);} 50%{transform:translateY(-9px) rotate(5deg);} }
+  @keyframes wiggle{ 0%,100%{transform:rotate(6deg);} 50%{transform:rotate(1deg);} }
+  @keyframes pulseGlow{ 0%,100%{box-shadow:0 10px 24px -8px rgba(255,59,92,0.55);} 50%{box-shadow:0 10px 32px -2px rgba(255,59,92,0.9);} }
+  @keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-4px);} }
+
+  .hero-sticker{animation:fadeInUp .55s ease-out both, wiggle 2.6s ease-in-out infinite .55s;}
+  .hero h1{animation:fadeInUp .55s ease-out both .1s;}
+  .hero p{animation:fadeInUp .55s ease-out both .2s;}
+  .hero-actions{animation:fadeInUp .55s ease-out both .3s;}
+  .hero-sparkle{animation:float 3.4s ease-in-out infinite;}
+  .hero-sparkle:nth-of-type(2){animation-duration:4s; animation-delay:.6s;}
+
+  .floating-apply{animation:pulseGlow 2.2s ease-in-out infinite;}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+  .reveal-fade{opacity:0; transition:opacity .6s ease;}
+  .reveal-fade.visible{opacity:1;}
+
+  .service-card, .process-step{transition:transform .22s ease, box-shadow .22s ease;}
+  .service-card:hover, .process-step:hover{transform:translateY(-5px) scale(1.02); box-shadow:0 16px 30px -12px rgba(36,27,47,0.28);}
+  .service-card .emoji{display:inline-block; transition:transform .25s ease;}
+  .service-card:hover .emoji{transform:scale(1.2) rotate(-8deg);}
+  .benefit{transition:transform .18s ease, box-shadow .18s ease;}
+  .benefit:hover{transform:translateY(-3px) scale(1.05); box-shadow:0 12px 22px -10px rgba(36,27,47,0.3);}
+  .position-ico{transition:transform .25s ease;}
+  .position-summary:hover .position-ico{transform:scale(1.12) rotate(-6deg);}
+  .position-card{transition:box-shadow .2s ease;}
+  .position-card:hover{box-shadow:0 16px 30px -12px rgba(36,27,47,0.24);}
+  .hot-sticker{animation:wiggle 2.4s ease-in-out infinite;}
+  .looking-list li{opacity:0; transform:translateX(-10px); transition:opacity .4s ease, transform .4s ease;}
+  .looking-card.visible .looking-list li{opacity:1; transform:translateX(0);}
+  .final-cta .cta-mini{animation:bob 2.4s ease-in-out infinite;}
+</style>
+
+<header class="top">
+  <div class="top-bar">
+    <div class="wordmark">NW <span class="mark">GROUP</span><span class="badge" id="badgeText">HIRING</span></div>
+    <nav class="links">
+      <a href="#top" id="navHome">Home</a>
+      <a href="#about" id="navAbout">About</a>
+      <a href="#why" id="navWhy">Why Join</a>
+      <a href="#positions" id="navPositions">Positions</a>
+    </nav>
+    <div class="top-actions">
+      <button class="lang-toggle" id="langToggle">中文</button>
+      <a class="cta-mini" id="navApply" href="https://forms.gle/ghGSjhFSVTfgxt6D7" target="_blank" rel="noopener">Apply Now</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-card">
+      <span class="hero-sparkle" style="top:14px; left:18px;">✨</span>
+      <span class="hero-sparkle" style="bottom:24px; left:34%;">🌟</span>
+      <span class="hero-sticker" id="heroSticker">📌 Now hiring</span>
+      <h1 id="heroTitle">Build your career.<br>Grow with NW<br>Group 🌱</h1>
+      <p id="heroText">We help businesses grow through financial solutions, government grants, AI and digital transformation, corporate training and team engagement — and we're growing the team behind it, based in Bangsar South, Kuala Lumpur.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" id="heroBtnPositions" onclick="document.getElementById('positions').scrollIntoView()">View open positions</button>
+        <a class="btn-ghost" id="heroBtnApply" href="https://forms.gle/ghGSjhFSVTfgxt6D7" target="_blank" rel="noopener">Apply now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"><div class="marquee-track" id="marqueeTrack"></div></div>
+
+<section id="life" class="alt-peach">
+  <div class="wrap">
+    <div class="section-head"><span class="section-emoji">📸</span><h2 id="lifeTitle">Life at NW Group</h2></div>
+    <p class="section-sub" id="lifeSub">A peek at our office in Bangsar South, the team, and the classrooms we run.</p>
+    <div class="photo-feed" id="photoFeed"></div>
+    <p class="photo-note" id="photoNote">Placeholder photos shown — send your real office/team/event shots and I'll swap these in.</p>
+  </div>
+</section>
+
+<section id="about" class="alt-mint">
+  <div class="wrap">
+    <div class="section-head"><span class="section-emoji">💼</span><h2 id="aboutTitle">More than just a job</h2></div>
+    <p class="section-sub" id="aboutSub">Our team works on real business challenges, helping companies grow through the areas below.</p>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<section id="why" class="alt-lavender">
+  <div class="wrap">
+    <div class="section-head"><span class="section-emoji">🎁</span><h2 id="whyTitle">Why join us</h2></div>
+    <div class="benefits-grid" id="benefitsGrid"></div>
+  </div>
+</section>
+
+<section id="positions" class="alt-yellow">
+  <div class="wrap">
+    <div class="section-head"><span class="section-emoji">✨</span><h2 id="positionsTitle">Open positions</h2></div>
+    <p class="section-sub" id="positionsSub">Admin, Sales, Marketing & Event Management and Finance — full-time and internship, based in Bangsar South, Kuala Lumpur.</p>
+    <div class="positions-list" id="positionsList"></div>
+  </div>
+</section>
+
+<section id="looking-for" class="alt-peach">
+  <div class="wrap">
+    <div class="looking-card stagger-observe">
+      <span class="looking-label" id="lookingLabel">Who we're looking for</span>
+      <h2 style="margin:12px 0 0; font-size:clamp(1.5rem,4vw,2rem);" id="lookingTitle">People who are ready to learn and grow 🌟</h2>
+      <ul class="looking-list" id="lookingList"></ul>
+      <p class="note" id="lookingNote">Fresh graduates and students are encouraged to apply for suitable positions.</p>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="alt-mint">
+  <div class="wrap">
+    <div class="section-head"><span class="section-emoji">📝</span><h2 id="processTitle">How to apply</h2></div>
+    <p class="section-sub" id="processSub">A simple, 4-step process.</p>
+    <div class="process-list" id="processList"></div>
+  </div>
+</section>
+
+<section id="final-cta" class="alt-lavender">
+  <div class="wrap">
+    <div class="final-cta">
+      <h2 id="finalTitle">Ready to build your career with us? 🚀</h2>
+      <p id="finalText">Join NW Group and grow your career while working on real business challenges and opportunities.</p>
+      <a class="cta-mini" id="finalApply" href="https://forms.gle/ghGSjhFSVTfgxt6D7" target="_blank" rel="noopener">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p id="footerLine1">© 2026 NW Group · Bangsar South, Kuala Lumpur, Malaysia</p>
+    <p id="footerLine2">Financial Solutions · Government Grants · AI & Digital Transformation · Corporate Training · Team Engagement</p>
+  </div>
+</footer>
+
+<a class="cta-mini floating-apply" id="floatingApply" href="https://forms.gle/ghGSjhFSVTfgxt6D7" target="_blank" rel="noopener">Apply Now</a>
+
+<script>
+const FORM_URL = "https://forms.gle/ghGSjhFSVTfgxt6D7";
+let currentLang = 'en';
+
+const photos = [
+  {emoji:'🏢', tone:'p1', alt_en:'NW Group Holding Sdn Bhd office lobby in Bangsar South', alt_zh:'NW Group Holding Sdn Bhd 位于 Bangsar South 的办公室大堂', cap_en:'Our office lobby 🏢', cap_zh:'我们的办公室大堂 🏢', likes:214},
+  {emoji:'🌏', tone:'p2', alt_en:'NW Group team at MATRADE Global Trade Insights event', alt_zh:'NW Group 团队出席 MATRADE 全球贸易洞察活动', cap_en:'Repping NW Group at MATRADE\'s Global Trade Insights event 🌏', cap_zh:'代表 NW Group 出席 MATRADE 全球贸易洞察活动 🌏', likes:268},
+  {emoji:'🎉', tone:'p3', alt_en:'NW Group office games session', alt_zh:'NW Group 办公室游戏活动', cap_en:'Office games — Guess It! 🎉', cap_zh:'办公室游戏——你猜我猜！🎉', likes:198},
+  {emoji:'🍫', tone:'p4', alt_en:'NW Group team member with a giant Pocky box', alt_zh:'NW Group 同事抱着巨型 Pocky 盒子', cap_en:'Snack surprises hit different here 🍫', cap_zh:'办公室的惊喜零食时刻 🍫', likes:241},
+  {emoji:'👋', tone:'p1', alt_en:'NW Group team chatting in the office', alt_zh:'NW Group 团队在办公室交流', cap_en:'What we do in our office 👋✨', cap_zh:'我们在办公室都做些什么 👋✨', likes:176},
+  {emoji:'📰', tone:'p2', alt_en:'NW Group corporate advisory flyers', alt_zh:'NW Group 企业顾问宣传单张', cap_en:'Spreading the word around town 📰', cap_zh:'把消息传遍大街小巷 📰', likes:132},
+  {emoji:'🧧', tone:'p3', alt_en:'NW Group team during Chinese New Year office decorations', alt_zh:'NW Group 团队与农历新年办公室布置', cap_en:'CNY office vibes 🧧', cap_zh:'办公室新年气氛 🧧', likes:220},
+];
+
+const i18n = {
+  en: {
+    badge:'HIRING', navHome:'Home', navAbout:'About', navWhy:'Why Join', navPositions:'Positions', apply:'Apply Now',
+    heroSticker:'📌 Now hiring', heroTitle:"Build your career.<br>Grow with <span class=\"hl\">NW Group</span> 🌱",
+    marquee:['📌 NOW HIRING','💼 4 DEPARTMENTS','🎓 FRESH GRADS WELCOME','🚀 APPLY TODAY','📍 BANGSAR SOUTH, KL'],
+    heroText:"We help businesses grow through financial solutions, government grants, AI and digital transformation, corporate training and team engagement — and we're growing the team behind it, based in Bangsar South, Kuala Lumpur.",
+    heroBtnPositions:'View open positions', heroBtnApply:'Apply now',
+    lifeTitle:'Life at NW Group', lifeSub:'A peek at our office in Bangsar South, the team, and the classrooms we run.',
+    photoNote:"Placeholder tiles shown here — swap in your real office/team/event photos and I'll drop them right in.",
+    aboutTitle:'More than just a job', aboutSub:'Our team works on real business challenges, helping companies grow through the areas below.',
+    services:[
+      {emoji:'💰', title:'Financial Solutions', desc:'Helping businesses access the right financing for their growth stage.'},
+      {emoji:'🏛️', title:'Government Grants', desc:'Guiding SMEs through grants they qualify for but often miss.'},
+      {emoji:'🤖', title:'AI & Digital Transformation', desc:'Helping businesses adopt AI and modern digital tools with confidence.'},
+      {emoji:'🎓', title:'Corporate Training', desc:'Practical training programmes that build real business capability.'},
+      {emoji:'🤝', title:'Team Engagement', desc:'Team building and engagement programmes for stronger organisations.'},
+    ],
+    whyTitle:'Why join us',
+    benefits:['📊 Real business projects','📈 Cross-team exposure','🎓 Training & development','🚀 Career growth','🤖 Modern AI tools','🤝 Collaborative culture'],
+    positionsTitle:'Open positions', positionsSub:'Admin, Sales, Marketing & Event Management and Finance — full-time and internship, based in Bangsar South, Kuala Lumpur.',
+    lookingLabel:"Who we're looking for", lookingTitle:'People who are ready to learn and grow 🌟',
+    lookingList:['Willing to learn and grow','Proactive and responsible','Able to work independently and in a team','Good at communication and problem-solving','Comfortable in a fast-paced environment','Interested in business, marketing, finance or digital transformation'],
+    lookingNote:'Fresh graduates and students are encouraged to apply for suitable positions.',
+    processTitle:'How to apply', processSub:'A simple, 4-step process.',
+    steps:[
+      {title:'Choose your position', desc:'Explore our available career opportunities above.'},
+      {title:'Submit your application', desc:'Complete the form and upload your latest resume.'},
+      {title:'Application review', desc:'Our recruitment team will review your application.'},
+      {title:'Interview', desc:'Shortlisted candidates will be contacted for the next stage.'},
+    ],
+    finalTitle:'Ready to build your career with us? 🚀', finalText:'Join NW Group and grow your career while working on real business challenges and opportunities.',
+    footerLine1:'© 2026 NW Group · Bangsar South, Kuala Lumpur, Malaysia',
+    footerLine2:'Financial Solutions · Government Grants · AI & Digital Transformation · Corporate Training · Team Engagement',
+    detailLabels:{overview:'Job overview', responsibilities:'Key responsibilities', requirements:'Requirements', learn:'What you will learn', growth:'Career growth', salary:'Remuneration', applyFor:'Apply for'},
+    hotLabel:'🔥 Popular',
+  },
+  zh: {
+    badge:'招聘中', navHome:'首页', navAbout:'关于我们', navWhy:'加入理由', navPositions:'职位空缺', apply:'立即申请',
+    heroSticker:'📌 招聘中', heroTitle:"打造你的事业，<br>与 <span class=\"hl\">NW Group</span> 一起成长 🌱",
+    marquee:['📌 火热招聘中','💼 4 大部门','🎓 应届生欢迎','🚀 立即申请','📍 吉隆坡 BANGSAR SOUTH'],
+    heroText:"我们通过财务解决方案、政府补助、人工智能与数字化转型、企业培训以及团队建设，帮助企业成长——现在，我们也在扩大幕后团队，工作地点位于吉隆坡 Bangsar South。",
+    heroBtnPositions:'查看职位空缺', heroBtnApply:'立即申请',
+    lifeTitle:'NW Group 的日常', lifeSub:'一起看看我们位于 Bangsar South 的办公室、团队日常，以及我们开办的培训课程。',
+    photoNote:'目前显示的是占位图块 —— 提供真实的办公室/团队/活动照片后，我可以立即替换上去。',
+    aboutTitle:'不只是一份工作', aboutSub:'我们的团队致力于解决真实的商业挑战，通过以下领域帮助企业成长。',
+    services:[
+      {emoji:'💰', title:'财务解决方案', desc:'协助企业在不同成长阶段获得合适的融资方案。'},
+      {emoji:'🏛️', title:'政府补助', desc:'协助中小企业申请他们符合资格却常常错过的政府补助。'},
+      {emoji:'🤖', title:'人工智能与数字化转型', desc:'协助企业自信地采用人工智能与现代数字工具。'},
+      {emoji:'🎓', title:'企业培训', desc:'实用的培训课程，提升企业的实际运营能力。'},
+      {emoji:'🤝', title:'团队建设', desc:'团队建设与凝聚力活动，打造更强大的组织。'},
+    ],
+    whyTitle:'为什么加入我们',
+    benefits:['📊 真实商业项目','📈 跨团队历练','🎓 培训与发展','🚀 职业成长','🤖 现代人工智能工具','🤝 协作文化'],
+    positionsTitle:'职位空缺', positionsSub:'行政、销售、市场与活动管理，以及财务岗位 —— 提供全职与实习职位，工作地点位于吉隆坡 Bangsar South。',
+    lookingLabel:'我们在寻找这样的你', lookingTitle:'愿意学习、渴望成长的你 🌟',
+    lookingList:['愿意学习与成长','积极主动、有责任心','能够独立工作，也能融入团队合作','具备良好的沟通与解决问题能力','能适应快节奏的工作环境','对商业、市场营销、财务或数字化转型感兴趣'],
+    lookingNote:'欢迎应届毕业生与在校学生申请合适的职位。',
+    processTitle:'如何申请', processSub:'简单四步骤，轻松申请。',
+    steps:[
+      {title:'选择职位', desc:'浏览以上的职位空缺。'},
+      {title:'提交申请', desc:'填写申请表格，并上传最新履历。'},
+      {title:'申请审核', desc:'我们的招聘团队将审核你的申请。'},
+      {title:'面试邀约', desc:'入围候选人将获通知进入下一阶段。'},
+    ],
+    finalTitle:'准备好与我们一起打造你的事业了吗？🚀', finalText:'加入 NW Group，在真实的商业挑战与机遇中成长你的事业。',
+    footerLine1:'© 2026 NW Group · 马来西亚吉隆坡 Bangsar South',
+    footerLine2:'财务解决方案 · 政府补助 · 人工智能与数字化转型 · 企业培训 · 团队建设',
+    detailLabels:{overview:'职位概述', responsibilities:'主要职责', requirements:'职位要求', learn:'你将学到', growth:'职业发展', salary:'薪酬', applyFor:'申请'},
+    hotLabel:'🔥 热门',
+  }
+};
+
+const positions = [
+  {
+    id:'admin', icon:'🗂️', location:'Bangsar South, KL', location_zh:'吉隆坡 Bangsar South',
+    en:{ title:'Admin', types:'Full-Time / Internship',
+      overview:"Support daily business operations, administration and coordination across internal teams at NW Group. This admin role is a great fit for organised, detail-oriented candidates looking to understand how a business consulting company runs day to day.",
+      responsibilities:['Manage documentation and internal records','Coordinate schedules and support office operations','Assist teams with day-to-day administrative tasks','Handle correspondence and basic office communication'],
+      requirements:['Basic computer proficiency (Microsoft Office / Google Workspace)','Organised, detail-oriented and reliable','Good communication skills','Fresh graduates and students are welcome to apply'],
+      learn:'You will gain first-hand exposure to how a growing business consulting company operates, including cross-department coordination and professional communication.',
+      growth:'Strong performers may progress into operations or office management responsibilities.',
+      salary:'Competitive remuneration based on experience and position.' },
+    zh:{ title:'行政', types:'全职 / 实习',
+      overview:'支持 NW Group 日常业务运营、行政事务，并协调内部团队工作。此行政职位非常适合有条理、注重细节，并希望了解商业咨询公司日常运作的候选人。',
+      responsibilities:['管理文件与内部记录','协调日程安排，支持办公室运营','协助各团队处理日常行政工作','处理往来信件及基本办公室沟通'],
+      requirements:['具备基本电脑操作能力（Microsoft Office / Google Workspace）','做事有条理、注重细节、值得信赖','良好的沟通能力','欢迎应届毕业生与在校学生申请'],
+      learn:'你将亲身体验一家不断成长的商业咨询公司如何运作，包括跨部门协调与专业沟通技巧。',
+      growth:'表现优异者有机会晋升至营运或办公室管理相关职位。',
+      salary:'薪酬根据经验与职位面议。' },
+  },
+  {
+    id:'sales', icon:'📈', location:'Bangsar South, KL', location_zh:'吉隆坡 Bangsar South',
+    en:{ title:'Sales', types:'Full-Time / Internship',
+      overview:"Develop business opportunities, build client relationships and help businesses discover the right NW Group solutions. This Sales Jobs Kuala Lumpur opportunity suits confident, proactive individuals who enjoy talking to people and solving business problems.",
+      responsibilities:['Identify and reach out to prospective business clients','Conduct client meetings and calls','Present NW Group’s financial solutions, grants and training services','Follow up on leads and maintain accurate records'],
+      requirements:['Good communication and interpersonal skills','Confident, proactive and results-driven','Interest in business, finance or consulting','Fresh graduates and students are welcome to apply'],
+      learn:'You will learn the full sales process, client relationship management, and gain direct exposure to business consulting and financial solutions.',
+      growth:'A clear path toward senior sales or business development roles for strong performers.',
+      salary:'Competitive remuneration based on experience and position.' },
+    zh:{ title:'销售', types:'全职 / 实习',
+      overview:'开发商业机会、建立客户关系，协助企业了解适合他们的 NW Group 解决方案。这份吉隆坡销售工作适合自信、积极主动，喜欢与人沟通并解决商业问题的候选人。',
+      responsibilities:['开发并联系潜在企业客户','进行客户会议与电话沟通','介绍 NW Group 的财务解决方案、政府补助与培训服务','跟进潜在客户，并维护准确的客户记录'],
+      requirements:['良好的沟通与人际交往能力','自信、积极主动、以结果为导向','对商业、财务或咨询领域感兴趣','欢迎应届毕业生与在校学生申请'],
+      learn:'你将学习完整的销售流程与客户关系管理，并直接接触商业咨询与财务解决方案领域。',
+      growth:'表现优异者可晋升至高级销售或业务拓展相关职位。',
+      salary:'薪酬根据经验与职位面议。' },
+  },
+  {
+    id:'marketing', icon:'🎯', location:'Bangsar South, KL', location_zh:'吉隆坡 Bangsar South', hot:true,
+    en:{ title:'Marketing & Event Management', types:'Full-Time / Internship',
+      overview:"Plan marketing campaigns, manage social media and support events and business activities. This Marketing Internship Malaysia and Event Management Jobs Malaysia opportunity is ideal for creative, organised candidates who enjoy content and live events.",
+      responsibilities:['Plan and support content across social platforms (including Xiaohongshu, Instagram and TikTok)','Assist in executing marketing campaigns','Coordinate logistics for events, workshops and NW Academy classes','Support on-ground event operations'],
+      requirements:['Creative, organised and detail-oriented','Interest in social media, content or events','Comfortable multitasking in a fast-paced environment','Fresh graduates and students are welcome to apply'],
+      learn:'You will build real experience in campaign planning, event coordination and social media strategy for a growing business.',
+      growth:'Potential progression into marketing executive or event lead responsibilities.',
+      salary:'Competitive remuneration based on experience and position.' },
+    zh:{ title:'市场与活动管理', types:'全职 / 实习',
+      overview:'策划营销活动、管理社交媒体，并支持各类活动与商业活动的执行。这份市场实习与活动管理工作适合有创意、有条理，喜欢内容创作与活动策划的候选人。',
+      responsibilities:['规划并支持各社交平台内容（包括小红书、Instagram 与 TikTok）','协助执行营销活动','协调活动、工作坊与 NW Academy 课程的相关后勤','支持活动现场执行工作'],
+      requirements:['有创意、做事有条理、注重细节','对社交媒体、内容创作或活动策划感兴趣','能在快节奏环境中妥善处理多项任务','欢迎应届毕业生与在校学生申请'],
+      learn:'你将在一家不断成长的企业中，累积营销活动策划、活动协调与社交媒体策略的实战经验。',
+      growth:'有机会晋升至市场执行或活动负责人相关职位。',
+      salary:'薪酬根据经验与职位面议。' },
+  },
+  {
+    id:'finance', icon:'📊', location:'Bangsar South, KL', location_zh:'吉隆坡 Bangsar South',
+    en:{ title:'Finance', types:'Full-Time / Internship',
+      overview:"Support finance-related operations, documentation, reporting and business financial processes. This Finance Internship Malaysia role is well suited to detail-oriented candidates with an interest in SME financing and grants.",
+      responsibilities:['Assist with financial documentation and record-keeping','Support SME financing and government grant application processes','Maintain accurate financial records','Provide basic reporting support to the finance team'],
+      requirements:['Detail-oriented with good numeracy skills','Interest in finance, accounting or business','Fresh graduates in finance or accounting are encouraged to apply','Fresh graduates and students are welcome to apply'],
+      learn:'You will gain direct exposure to SME financing processes, government grant applications and financial reporting.',
+      growth:'A pathway toward finance executive or advisory support roles.',
+      salary:'Competitive remuneration based on experience and position.' },
+    zh:{ title:'财务', types:'全职 / 实习',
+      overview:'支持财务相关运营、文件处理、报告编制以及企业财务流程。这份财务实习职位，适合注重细节，并对中小企业融资与政府补助感兴趣的候选人。',
+      responsibilities:['协助处理财务文件与记录保存','支持中小企业融资与政府补助申请流程','维护准确的财务记录','为财务团队提供基本报告支持'],
+      requirements:['注重细节，具备良好的数字运算能力','对财务、会计或商业领域感兴趣','欢迎财务或会计相关专业的应届毕业生申请','欢迎应届毕业生与在校学生申请'],
+      learn:'你将直接接触中小企业融资流程、政府补助申请与财务报告工作。',
+      growth:'有机会晋升至财务执行或顾问支持相关职位。',
+      salary:'薪酬根据经验与职位面议。' },
+  },
+];
+
+function renderPhotos(){
+  const feed = document.getElementById('photoFeed');
+  feed.innerHTML = photos.map((ph,i) => `
+    <div class="photo-card reveal-fade" style="transition-delay:${i*70}ms">
+      <div class="tape"></div>
+      <div class="photo-placeholder ${ph.tone}" role="img" aria-label="${currentLang==='en' ? ph.alt_en : ph.alt_zh}">${ph.emoji}</div>
+      <div class="photo-cap"><p>${currentLang==='en' ? ph.cap_en : ph.cap_zh}</p><div class="photo-meta">❤️ ${ph.likes}</div></div>
+    </div>
+  `).join('');
+}
+
+function renderServices(){
+  const t = i18n[currentLang];
+  document.getElementById('servicesGrid').innerHTML = t.services.map((s,i) => `
+    <div class="service-card reveal" style="transition-delay:${i*70}ms"><span class="emoji">${s.emoji}</span><h3>${s.title}</h3><p>${s.desc}</p></div>
+  `).join('');
+}
+
+function renderBenefits(){
+  const t = i18n[currentLang];
+  document.getElementById('benefitsGrid').innerHTML = t.benefits.map((b,i) => `<div class="benefit reveal" style="transition-delay:${i*50}ms">${b}</div>`).join('');
+}
+
+function renderLookingList(){
+  const t = i18n[currentLang];
+  document.getElementById('lookingList').innerHTML = t.lookingList.map((item,i) => `<li style="transition-delay:${i*70}ms"><span class="check">✓</span> ${item}</li>`).join('');
+}
+
+function renderProcessSteps(){
+  const t = i18n[currentLang];
+  document.getElementById('processList').innerHTML = t.steps.map((s,i) => `
+    <div class="process-step reveal" style="transition-delay:${i*80}ms"><div class="step-num">0${i+1}</div><h3>${s.title}</h3><p>${s.desc}</p></div>
+  `).join('');
+}
+
+function renderPositions(openId){
+  const t = i18n[currentLang];
+  const list = document.getElementById('positionsList');
+  list.innerHTML = positions.map((p,i) => {
+    const d = p[currentLang];
+    const loc = currentLang === 'en' ? p.location : p.location_zh;
+    return `
+    <div class="position-card reveal" id="card-${p.id}" style="transition-delay:${i*80}ms">
+      ${p.hot ? `<span class="hot-sticker">${t.hotLabel}</span>` : ''}
+      <button class="position-summary" data-id="${p.id}">
+        <div class="position-left">
+          <div class="position-ico">${p.icon}</div>
+          <div class="position-title">
+            <h3>${d.title}</h3>
+            <div class="position-badges">
+              <span class="badge type">${d.types}</span>
+              <span class="badge loc">${loc}</span>
+            </div>
+          </div>
+        </div>
+        <span class="chevron">⌄</span>
+      </button>
+      <div class="position-detail" id="detail-${p.id}">
+        <div class="position-detail-inner">
+          <div class="detail-block"><h4>${t.detailLabels.overview}</h4><p>${d.overview}</p></div>
+          <div class="detail-block"><h4>${t.detailLabels.responsibilities}</h4><ul>${d.responsibilities.map(r=>`<li>${r}</li>`).join('')}</ul></div>
+          <div class="detail-block"><h4>${t.detailLabels.requirements}</h4><ul>${d.requirements.map(r=>`<li>${r}</li>`).join('')}</ul></div>
+          <div class="detail-block"><h4>${t.detailLabels.learn}</h4><p>${d.learn}</p></div>
+          <div class="detail-block"><h4>${t.detailLabels.growth}</h4><p>${d.growth}</p></div>
+          <div class="detail-block"><h4>${t.detailLabels.salary}</h4><p>${d.salary}</p></div>
+          <a class="btn-primary detail-apply" href="${FORM_URL}" target="_blank" rel="noopener">${t.detailLabels.applyFor} ${d.title}</a>
+        </div>
+      </div>
+    </div>
+  `;}).join('');
+
+  document.querySelectorAll('.position-summary').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const card = document.getElementById('card-' + btn.dataset.id);
+      const detail = document.getElementById('detail-' + btn.dataset.id);
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.position-card').forEach(c=>{
+        c.classList.remove('open');
+        c.querySelector('.position-detail').style.maxHeight = null;
+      });
+      if(!isOpen){
+        card.classList.add('open');
+        detail.style.maxHeight = detail.scrollHeight + 'px';
+      }
+    });
+  });
+
+  if(openId){
+    const btn = document.querySelector(`.position-summary[data-id="${openId}"]`);
+    if(btn) btn.click();
+  }
+}
+
+function applyStaticText(){
+  const t = i18n[currentLang];
+  document.getElementById('badgeText').textContent = t.badge;
+  document.getElementById('navHome').textContent = t.navHome;
+  document.getElementById('navAbout').textContent = t.navAbout;
+  document.getElementById('navWhy').textContent = t.navWhy;
+  document.getElementById('navPositions').textContent = t.navPositions;
+  document.getElementById('navApply').textContent = t.apply;
+  document.getElementById('heroSticker').textContent = t.heroSticker;
+  document.getElementById('heroTitle').innerHTML = t.heroTitle;
+  document.getElementById('heroText').textContent = t.heroText;
+  document.getElementById('heroBtnPositions').textContent = t.heroBtnPositions;
+  document.getElementById('heroBtnApply').textContent = t.heroBtnApply;
+  document.getElementById('lifeTitle').textContent = t.lifeTitle;
+  document.getElementById('lifeSub').textContent = t.lifeSub;
+  document.getElementById('photoNote').textContent = t.photoNote;
+  document.getElementById('aboutTitle').textContent = t.aboutTitle;
+  document.getElementById('aboutSub').textContent = t.aboutSub;
+  document.getElementById('whyTitle').textContent = t.whyTitle;
+  document.getElementById('positionsTitle').textContent = t.positionsTitle;
+  document.getElementById('positionsSub').textContent = t.positionsSub;
+  document.getElementById('lookingLabel').textContent = t.lookingLabel;
+  document.getElementById('lookingTitle').textContent = t.lookingTitle;
+  document.getElementById('lookingNote').textContent = t.lookingNote;
+  document.getElementById('processTitle').textContent = t.processTitle;
+  document.getElementById('processSub').textContent = t.processSub;
+  document.getElementById('finalTitle').textContent = t.finalTitle;
+  document.getElementById('finalText').textContent = t.finalText;
+  document.getElementById('finalApply').textContent = t.apply;
+  document.getElementById('floatingApply').textContent = t.apply;
+  document.getElementById('footerLine1').textContent = t.footerLine1;
+  document.getElementById('footerLine2').textContent = t.footerLine2;
+  document.getElementById('langToggle').textContent = currentLang === 'en' ? '中文' : 'EN';
+  document.documentElement.setAttribute('lang', currentLang === 'en' ? 'en' : 'zh');
+}
+
+function renderMarquee(){
+  const t = i18n[currentLang];
+  const items = t.marquee.map(m => `<span>${m} ·</span>`).join('');
+  document.getElementById('marqueeTrack').innerHTML = items + items;
+}
+
+let revealObserver;
+function initReveal(){
+  const targets = document.querySelectorAll('.reveal, .reveal-fade, .stagger-observe');
+  if(!('IntersectionObserver' in window)){
+    targets.forEach(el => el.classList.add('visible'));
+    return;
+  }
+  if(revealObserver) revealObserver.disconnect();
+  revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  targets.forEach(el => revealObserver.observe(el));
+}
+
+function renderAll(){
+  applyStaticText();
+  renderMarquee();
+  renderPhotos();
+  renderServices();
+  renderBenefits();
+  renderLookingList();
+  renderProcessSteps();
+  renderPositions();
+  initReveal();
+}
+
+document.getElementById('langToggle').addEventListener('click', ()=>{
+  currentLang = currentLang === 'en' ? 'zh' : 'en';
+  renderAll();
+});
+
+renderAll();
+</script>
